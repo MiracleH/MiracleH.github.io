@@ -1,0 +1,758 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="对于JavaScript的理解
+JavaScript是一种基于对象的语言，万物皆对象
+因为在JavaScript语法中没有class，所以JavaScript又不是一门真正的面向对象编程语言
+语句就是操作
+表达式一定有返回值
+对象是怎么来的  js里所有的对象都是通过函数创建出来的  js里有两种对象，一种是通过函数创建出来的对象，一种是函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript高级（一）">
+<meta property="og:url" content="http://MiracleH.github.io/2016/02/03/JavaScript高级(一)/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="对于JavaScript的理解
+JavaScript是一种基于对象的语言，万物皆对象
+因为在JavaScript语法中没有class，所以JavaScript又不是一门真正的面向对象编程语言
+语句就是操作
+表达式一定有返回值
+对象是怎么来的  js里所有的对象都是通过函数创建出来的  js里有两种对象，一种是通过函数创建出来的对象，一种是函数">
+<meta property="og:updated_time" content="2017-03-03T16:12:02.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript高级（一）">
+<meta name="twitter:description" content="对于JavaScript的理解
+JavaScript是一种基于对象的语言，万物皆对象
+因为在JavaScript语法中没有class，所以JavaScript又不是一门真正的面向对象编程语言
+语句就是操作
+表达式一定有返回值
+对象是怎么来的  js里所有的对象都是通过函数创建出来的  js里有两种对象，一种是通过函数创建出来的对象，一种是函数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://MiracleH.github.io/2016/02/03/JavaScript高级(一)/"/>
+
+
+
+
+
+  <title> JavaScript高级（一） | Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">hyj's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://MiracleH.github.io/2016/02/03/JavaScript高级(一)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488402562170&di=f7a9351de4346fbd44c8290036e5ec40&imgtype=0&src=http%3A%2F%2Fwww.caihaibo.cn%2Fwp-content%2Fuploads%2F2016%2F01%2F20160108182504.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript高级（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-03T12:33:35+08:00">
+                2016-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="对于JavaScript的理解"><a href="#对于JavaScript的理解" class="headerlink" title="对于JavaScript的理解"></a>对于JavaScript的理解</h2><ul>
+<li>JavaScript是一种基于对象的语言，万物皆对象</li>
+<li>因为在JavaScript语法中没有class，所以JavaScript又不是一门真正的面向对象编程语言</li>
+<li>语句就是操作</li>
+<li>表达式一定有返回值</li>
+<li>对象是怎么来的<br>  js里所有的对象都是通过函数创建出来的<br>  js里有两种对象，一种是通过函数创建出来的对象，一种是函数</li>
+</ul>
+<a id="more"></a>
+<h2 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
+<li><p>我对于封装的理解就是将属性(property)及方法(method)封装在对象里，然后对外界暴露其接口，别人使用时，只需要会使用其API接口，但是我们需要如何去做呢？</p>
+<ol>
+<li><p>生成实例化对象的原始模式<br>假设我们把人看成一个对象，他有姓名和年龄两个属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Person = &#123;</div><div class="line">    <span class="attr">name</span> : <span class="string">""</span>,</div><div class="line">    <span class="attr">age</span> : <span class="string">""</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来我们根据原型对象的规格，生成两个实例化对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = &#123;&#125;; <span class="comment">//创建一个空对象</span></div><div class="line">p1.name = <span class="string">"zhangsan"</span>; <span class="comment">//按照原型对象的属性进行赋值</span></div><div class="line">p1.age = <span class="number">18</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = &#123;&#125;;</div><div class="line">p2.name = <span class="string">"lisi"</span>;</div><div class="line">p2.age = <span class="number">20</span>;</div></pre></td></tr></table></figure>
+<p>这就是最简单的封装，但是这样的封装有缺点，一是在创建多个实例的时候一直在重复，写起来很麻烦，二就是原型和实例之间看不出什么联系</p>
+</li>
+<li><p>原始模式的改进<br>写一个函数来解决重复问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name , age</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">name</span> : name,</div><div class="line">        <span class="attr">age</span> : age</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后再生成实例化对象，其实就是调用函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = Person(<span class="string">"zhangsan"</span> , <span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = Person(<span class="string">"lisi"</span> , <span class="number">20</span>);</div></pre></td></tr></table></figure>
+<p>这个方法的缺点同样是没法看出来p1与p2之间的联系，看不出来他们是同一个原型对象的实例</p>
+</li>
+<li><p>构造函数模式<br>为了解决这一个问题，JavaScript提供了构造函数模式(Constructor)<br>构造函数是什么呢？其实就是一个普通的函数，但是在内部使用了this变量。对构造函数使用new运算符，就能生成实例，并且this变量会绑定到实例对象上<br>例如，我们先创建一个构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name , age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"><span class="string">``</span><span class="string">`    </span></div><div class="line">然后我们创建实例化对象</div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span> , <span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">"lisi"</span> , <span class="number">20</span>);</div></pre></td></tr></table></figure>
+<p>这时候p1和p2会自动包含有一个constructor属性，指向Person构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(p1.constructor == Person) <span class="comment">//ture</span></div><div class="line"><span class="built_in">console</span>.log(p2.constructor == Person) <span class="comment">//ture</span></div></pre></td></tr></table></figure>
+<p>JavaScript还给我们提供一个instanceof运算符，用来验证原型对象与实例之间的关系</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(p1 <span class="keyword">instanceof</span> Person) <span class="comment">//ture</span></div><div class="line"><span class="built_in">console</span>.log(p2 <span class="keyword">instanceof</span> Person) <span class="comment">//ture</span></div></pre></td></tr></table></figure>
+<p>—构造函数的问题<br> 在创建构造函数时，每一个实例对象都可能有自己相同的属性，如果我们把这些属性都放在构造函数里，每一次创建实例对象时都会将相同的属性创建出来这样就会浪费内存</p>
+</li>
+<li><p>prototype模式<br>原型的本质就是函数对象的属性<br>我们能把相同属性都放在原型里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name , age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Person.property = &#123;</div><div class="line">    <span class="attr">sayHi</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"hello"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们用这种方式来创建实例时，如果本身没有该属性，那么就会去原型里面找</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>, <span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> person(<span class="string">"lisi"</span>, <span class="number">20</span>);</div><div class="line">p1.sayHi();<span class="comment">//hello</span></div><div class="line">p2.sayHi();<span class="comment">//hello</span></div></pre></td></tr></table></figure>
+<p>这种模式提高了运行效率也不会浪费内存</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
+<li>所谓继承就是自己没有的别人有，然后直接从别人那里拿过来使用，在原型里实例对象可以使用他的原型对象中的属性就是属于继承</li>
+</ul>
+<h4 id="JavaScript的几种继承方式"><a href="#JavaScript的几种继承方式" class="headerlink" title="JavaScript的几种继承方式"></a>JavaScript的几种继承方式</h4><ol>
+<li>混入式<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">name</span>:<span class="string">"zhangsan"</span> , <span class="attr">age</span>:<span class="number">18</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(k <span class="keyword">in</span> obj1)&#123;</div><div class="line">    obj[k] = obj1[k];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>混入式继承其实就是将对象obj1中的属性，通过遍历的方式全部给了对象obj</li>
+</ul>
+<ol>
+<li>原型继承<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">funciton Person()&#123;&#125;;</div><div class="line"><span class="keyword">var</span> human = &#123;<span class="attr">name</span>:<span class="string">"zhangsan"</span>, <span class="attr">age</span>:<span class="number">18</span>&#125;;</div><div class="line"></div><div class="line">Person.prototype = human;</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>p的原型为构造函数Person所指向的对象，而对象human又将其赋给了构造函数Person的原型，这样一来，p就继承了human的属性</li>
+</ul>
+<ol>
+<li>经典继承</li>
+</ol>
+<ul>
+<li><p>json格式的发明人Douglas Crockford，提出了一个object()函数，可以做到这一点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(obj1);</div></pre></td></tr></table></figure>
+</li>
+<li><p>这个函数的作用就是创建一个新的对象obj，把obj1作为obj的原型</p>
+</li>
+</ul>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
+<li>对不起，JavaScript中并没有多态这个概念，如果想要了解，要去了解其他面向对象编程语言</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/03/JavaScript基础/" rel="next" title="JavaScript基础">
+                <i class="fa fa-chevron-left"></i> JavaScript基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/15/JavaScript高级(二)/" rel="prev" title="JavaScript高级（二）">
+                JavaScript高级（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488402562170&di=f7a9351de4346fbd44c8290036e5ec40&imgtype=0&src=http%3A%2F%2Fwww.caihaibo.cn%2Fwp-content%2Fuploads%2F2016%2F01%2F20160108182504.jpg"
+               alt="hyj" />
+          <p class="site-author-name" itemprop="name">hyj</p>
+           
+              <p class="site-description motion-element" itemprop="description">a coder can't code</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于JavaScript的理解"><span class="nav-number">1.</span> <span class="nav-text">对于JavaScript的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象的三大特性"><span class="nav-number">2.</span> <span class="nav-text">面向对象的三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">2.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">2.2.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript的几种继承方式"><span class="nav-number">2.2.1.</span> <span class="nav-text">JavaScript的几种继承方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">2.3.</span> <span class="nav-text">多态</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hyj</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
